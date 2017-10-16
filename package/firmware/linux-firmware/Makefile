@@ -61,3 +61,20 @@ define Package/r8188eu-firmware/install
 endef
 
 $(eval $(call BuildPackage,r8188eu-firmware))
+
+
+define Package/bnx2-firmware
+  SECTION:=firmware
+  CATEGORY:=Firmware
+  URL:=http://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git
+  TITLE:=Broadcom BCM5706/5708/5709/5716 firmware
+endef
+
+define Package/bnx2-firmware/install
+	$(INSTALL_DIR) $(1)/lib/firmware/bnx2
+	$(INSTALL_DATA) \
+		$(PKG_BUILD_DIR)/bnx2/* \
+		$(1)/lib/firmware/bnx2/
+endef
+
+$(eval $(call BuildPackage,bnx2-firmware))
