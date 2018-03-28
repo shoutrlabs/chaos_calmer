@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cp .config .config.tmp
+
+sed '/# CONFIG_PACKAGE_kmod/{s/# //g;s/ is not set/=m/g}'  -i .config.tmp
